@@ -1,15 +1,27 @@
-<div class="container py-4">
+<div class="container py-4" *ngIf="!loading">
   <div class="row">
     <div class="col-md-3 mb-3" *ngFor="let product of products">
-      <div class="card h-100" (click)="openProduct(product)" style="cursor: pointer;">
-        <img [src]="product.imageCover" class="card-img-top" alt="product" />
-        <div class="card-body">
-          <h5 class="card-title">{{ product.title }}</h5>
-          <p class="card-text text-danger">${{ product.priceAfterDiscount || product.price }}</p>
-          <button class="btn basket text-white mt-2" (click)="addToCart(product)"> Add To Cart</button>      
+      <div class="card h-100 border-0 shadow-sm rounded-4" (click)="openProduct(product)" style="cursor: pointer;">
+        
+        <div class="ratio ratio-4x3 overflow-hidden rounded-top">
+          <img [src]="product.imageCover" class="card-img-top object-fit-cover" alt="product" />
+        </div>
+    
+        <div class="card-body d-flex flex-column justify-content-between">
+          <div>
+            <h5 class="card-title fw-semibold text-truncate">{{ product.title }}</h5>
+            <p class="card-text text-danger fs-5">${{ product.priceAfterDiscount || product.price }}</p>
           </div>
+    
+          <button class="btn btn-info text-white mt-3 rounded-pill w-100" (click)="addToCart(product); $event.stopPropagation()">
+            Add To Cart
+          </button>
+        </div>
+    
       </div>
     </div>
+    
+    
   </div>
 </div>
 <!-- Product Modal -->
@@ -114,4 +126,8 @@
 
   <!-- Close -->
   <button class="btn-close position-absolute top-0 end-0 m-3" (click)="closeModal()"></button>
+</div>
+<div class="text-center w-100" *ngIf="loading">
+  <!-- <app-spinner></app-spinner> -->
+<div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 </div>

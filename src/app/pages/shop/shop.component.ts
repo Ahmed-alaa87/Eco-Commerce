@@ -10,6 +10,7 @@ import { ProductsService } from '../../service/products.service';
   styleUrl: './shop.component.css'
 })
 export class ShopComponent implements OnInit {
+loading:boolean=false
 products:any[]=[]
   productSrv = inject(ProductsService)
 
@@ -21,15 +22,18 @@ ngOnInit(): void {
 
 
 getAllApi() {
+  
   this.productSrv.getAllProducts().subscribe((res: any) => {
+    this.loading=true
     this.products = res.data.map((product: any) => ({
       ...product,
       addtocart: false,
       count:0
-
-    }));
+     
+    }
+  ));
     // console.log(this.products)
-
+    this.loading=false
   });
 
 }

@@ -5,9 +5,10 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
+  
 })
 export class HomeComponent implements OnInit {
   products: Product[] = [];
@@ -16,6 +17,8 @@ export class HomeComponent implements OnInit {
   selectedSize: string = 'medium';
   quantity: number = 1;
   showFullDescription:boolean = false;
+  loading:boolean = false;
+
   relatedProducts: Product[] = [];
   constructor(private productService: ProductsService,private router:Router) {}
 
@@ -24,9 +27,12 @@ export class HomeComponent implements OnInit {
   }
 
   getProducts(): void {
+    this.loading=true
     this.productService.getAllProducts().subscribe({
       next: (res) => {
         this.products = res.data;
+        this.loading=false
+
       },
       error: (err) => console.error('Error fetching products:', err)
     });
