@@ -21,7 +21,8 @@ registerform = new FormGroup({
   
   firstName: new FormControl('' , [Validators.minLength(3), Validators.maxLength(8), Validators.required ]),
   lastName:  new FormControl('' , [Validators.minLength(3), Validators.maxLength(8), Validators.required ]),
-  email:     new FormControl('' , [ Validators.required ]),
+  email:     new FormControl('' , [ Validators.required , Validators.email ,Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
+  ]),
   password:  new FormControl('' , [ Validators.minLength(8),Validators.maxLength(15),Validators.required ] ),
 
 

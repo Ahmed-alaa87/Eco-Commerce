@@ -38,14 +38,24 @@ export class LoginComponent {
     }
   }
   
+  // loginform = new FormGroup({
+  //   email: new FormControl("", [Validators.required, Validators.email]),
+  //   password: new FormControl("", [
+  //     Validators.required,
+  //     Validators.minLength(8),
+  //     Validators.maxLength(15),
+  //   ]),
+  // });
   
   
   
-  loginform = new FormGroup({
-    email : new FormControl("" , [Validators.required]) ,
-   password : new FormControl("" , [Validators.required]) 
+ loginform = new FormGroup({
+     email : new FormControl("" , [Validators.required , Validators.email]) ,
+    password : new FormControl("" , [Validators.required , Validators.minLength(8),Validators.maxLength(15) ])
 
-  })
+
+
+ })
 
 
   submit(form: FormGroup) {

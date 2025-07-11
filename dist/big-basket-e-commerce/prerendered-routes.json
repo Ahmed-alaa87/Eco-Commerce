@@ -1,0 +1,13 @@
+{
+  "routes": {
+    "/Eco-Commerce": {},
+    "/Eco-Commerce/about": {},
+    "/Eco-Commerce/blog": {},
+    "/Eco-Commerce/checkout": {},
+    "/Eco-Commerce/contact": {},
+    "/Eco-Commerce/home": {},
+    "/Eco-Commerce/login": {},
+    "/Eco-Commerce/register": {},
+    "/Eco-Commerce/shop": {}
+  }
+}
